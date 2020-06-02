@@ -59,6 +59,7 @@ public class ReactExoplayerViewManager extends ViewGroupManager<ReactExoplayerVi
     private static final String PROP_SELECTED_VIDEO_TRACK_VALUE = "value";
     private static final String PROP_HIDE_SHUTTER_VIEW = "hideShutterView";
     private static final String PROP_CONTROLS = "controls";
+    private static boolean muted = false;
 
     @Override
     public String getName() {
@@ -199,7 +200,12 @@ public class ReactExoplayerViewManager extends ViewGroupManager<ReactExoplayerVi
 
     @ReactProp(name = PROP_MUTED, defaultBoolean = false)
     public void setMuted(final ReactExoplayerView videoView, final boolean muted) {
+        this.muted = muted;
         videoView.setMutedModifier(muted);
+    }
+
+    public static boolean getMuted() {
+        return muted;
     }
 
     @ReactProp(name = PROP_VOLUME, defaultFloat = 1.0f)
