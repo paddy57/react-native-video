@@ -364,6 +364,7 @@ class ReactExoplayerView extends FrameLayout implements
                     exoPlayerView.setPlayer(player);
                     audioBecomingNoisyReceiver.setListener(self);
                     BANDWIDTH_METER.addEventListener(new Handler(), self);
+                    themedReactContext.addLifecycleEventListener(self);
                     setPlayWhenReady(!isPaused);
                     playerNeedsSource = true;
 
@@ -1087,7 +1088,7 @@ class ReactExoplayerView extends FrameLayout implements
 
     public void setPausedModifier(boolean paused) {
         isPaused = paused;
-        if (player != null) {
+        if (player != null && !isInBackground) {
             if (!paused) {
                 startPlayback();
             } else {
