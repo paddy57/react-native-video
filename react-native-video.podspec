@@ -31,5 +31,5 @@ Pod::Spec.new do |s|
 
   s.dependency "React"
 
-  s.default_subspec = "Video"
+  s.default_subspec = "VideoCaching"
 end

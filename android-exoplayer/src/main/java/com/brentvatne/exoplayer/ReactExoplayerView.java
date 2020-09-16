@@ -394,11 +394,17 @@ class ReactExoplayerView extends FrameLayout implements
                     eventEmitter.loadStart();
                     loadVideoStarted = true;
                 }
-
+    
                 // Initializing the playerControlView
                 initializePlayerControl();
                 setControls(controls);
                 applyModifiers();
+
+                if(ReactExoplayerViewManager.getMuted()){
+                    player.setVolume(0.f);
+                }else{
+                    player.setVolume(1.f);
+                }
             }
         }, 1);
     }
